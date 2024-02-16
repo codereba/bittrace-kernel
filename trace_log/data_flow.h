@@ -75,15 +75,6 @@ INLINE NTSTATUS _check_data_flow_event( PVOID object, r3_action_notify *action, 
 			}
 		}
 
-		//if( *conditions->object_path != L'\0' )
-		//{
-		//	if( )
-		//	{
-		//		ntstatus = STATUS_INVALID_PARAMETER; 
-		//		break; 
-		//	}
-		//}
-
 		if( conditions->type != SYS_ACTION_NONE )
 		{
 			if( conditions->type != action->action.action.type )

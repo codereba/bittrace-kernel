@@ -1,0 +1,55 @@
+
+!IF 0
+
+==========================================================================
+
+   Copyright (c) 2011 BalanceSoft 
+
+==========================================================================
+!ENDIF
+
+_NT_TARGET_VERSION_WIN7     =0x601
+_NT_TARGET_VERSION_VISTA    =0x600
+_NT_TARGET_VERSION_LONGHORN =0x600
+_NT_TARGET_VERSION_WS03     =0x502
+_NT_TARGET_VERSION_WINXP    =0x501
+_NT_TARGET_VERSION_WIN2K    =0x500
+
+!    IF defined(_NT_TARGET_VERSION) && $(_NT_TARGET_VERSION)>=$(_NT_TARGET_VERSION_WINXP) && $(_NT_TARGET_VERSION)<$(_NT_TARGET_VERSION_LONGHORN)
+TARGETNAME=tracelog
+!	 ELSE IF defined(_NT_TARGET_VERSION) && $(_NT_TARGET_VERSION)>=$(_NT_TARGET_VERSION_LONGHORN) && $(_NT_TARGET_VERSION)<=$(_NT_TARGET_VERSION_WIN7)
+TARGETNAME=tracelog_ex
+!    ELSE
+!        message BUILDMSG: Warning : It's not support for the current OS target.
+!    ENDIF
+
+TARGETPATH=..\Output
+TARGETTYPE=DRIVER
+
+TARGETLIBS=$(DDK_LIB_PATH)\nt.lib $(DDK_LIB_PATH)\ndis.lib $(DDK_LIB_PATH)\wdmsec.lib $(DDK_LIB_PATH)\csq.lib  $(IFSKIT_LIB_PATH)\fltMgr.lib ..\output\$(_BUILDARCH)\sevenfw_common.lib ..\output\$(_BUILDARCH)\common.lib
+C_DEFINES=$(C_DEFINES) -DDRIVER -D_WINDDK7 -D_DRIVER=1 -DSEVEN_FW_SYSMODULE=1 -DSAFE_LIST_USE_SPIN_LOCK=1 -DDEBUG_SAFE_LIST_LOCK=1 -DBSOD_DEBUG 
+#MSC_WARNING_LEVEL=/W4 /WX
+
+INCLUDES=..\seven_fw_common;..\common;..\win_trace;..\level_security\btree\;..\level_security\hash;..\fs_mon;..\krnlhook;
+
+SOURCES=trace_log.c \
+	sys_event.c \
+	safe_list.c \
+	infolist.c \
+	sys_event_define.c \
+	notify_event.c \
+	pending_notify.c \
+	socket_rule.c \
+	aio.c \
+	path_id.c \
+	wild_card.c \
+	r3_interface.c \
+	r3_shared_cbuffer.c \
+	unit_cbuffer.c \
+	kern_callback.c \
+	action_setup.c \
+	trace_common.c \
+	volume_name_map.c \
+	data_flow.c \
+	trace_log.rc \
+	

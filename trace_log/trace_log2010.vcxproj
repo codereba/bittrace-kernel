@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>trace_log</ProjectName>
+    <ProjectGuid>{3398CFEC-A7E2-455E-9640-86EE86176442}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\SevenFw\sevenfw;..\..\SevenFw\seven_fw_common;..\..\SevenFw\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>TEST_IN_RING3;_DRIVER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="aio.c" />
+    <ClCompile Include="..\common\anti_dbg.c" />
+    <ClCompile Include="..\common\buf_array.c" />
+    <ClCompile Include="..\common\buf_pool.c" />
+    <ClCompile Include="..\common\cbuffer.c" />
+    <ClCompile Include="..\common\common.c" />
+    <ClCompile Include="data_flow_trace.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="execute_flt.c" />
+    <ClCompile Include="fast_io_dispatch.c" />
+    <ClCompile Include="flt_msg.c" />
+    <ClCompile Include="..\common\hash_table.c" />
+    <ClCompile Include="infolist.c" />
+    <ClCompile Include="..\krnlhook\kern_callback.c" />
+    <ClCompile Include="..\common\mem_map_io.c" />
+    <ClCompile Include="mem_map_ref.c" />
+    <ClCompile Include="..\common\nbqueue.c" />
+    <ClCompile Include="notify_event.c" />
+    <ClCompile Include="r3_interface.c" />
+    <ClCompile Include="r3_interface_func.c" />
+    <ClCompile Include="socket_rule.c" />
+    <ClCompile Include="sys_event.c" />
+    <ClCompile Include="sys_event_define.c" />
+    <ClCompile Include="test.c" />
+    <ClCompile Include="thread_ctx.c" />
+    <ClCompile Include="trace_log.c" />
+    <ClCompile Include="unit_cbuffer.c" />
+    <ClCompile Include="..\seven_fw_common\safe_list.c" />
+    <ClCompile Include="..\level_security\btree\b_tree.c" />
+    <ClCompile Include="..\level_security\btree\bpt.c" />
+    <ClCompile Include="..\level_security\hash\crc.c" />
+    <ClCompile Include="..\level_security\btree\path_id.c" />
+    <ClCompile Include="..\level_security\btree\path_tree.c" />
+    <ClCompile Include="..\level_security\btree\wild_card.c" />
+    <ClCompile Include="..\level_security\fs_mng\item_cache.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\anti_dbg.h" />
+    <ClInclude Include="..\common\buf_array.h" />
+    <ClInclude Include="..\common\buf_pool.h" />
+    <ClInclude Include="..\common\cbuffer.h" />
+    <ClInclude Include="nbqueue.h" />
+    <ClInclude Include="..\common\r3_shared_buf_array.h" />
+    <ClInclude Include="r3_shared_cbuffer.h" />
+    <ClInclude Include="..\common\r3_shared_vm.h" />
+    <ClInclude Include="reg_rule_define.h" />
+    <ClInclude Include="thread_ctx.h" />
+    <ClInclude Include="access_rule_util.h" />
+    <ClInclude Include="acl_define.h" />
+    <ClInclude Include="..\SevenFwUI\duilib v1.1\action_learn\action_check.h" />
+    <ClInclude Include="action_type.h" />
+    <ClInclude Include="aio.h" />
+    <ClInclude Include="..\common\common.h" />
+    <ClInclude Include="data_flow_trace.h" />
+    <ClInclude Include="fast_io_dispatch.h" />
+    <ClInclude Include="flt_msg.h" />
+    <ClInclude Include="..\common\hash_table.h" />
+    <ClInclude Include="infolist.h" />
+    <ClInclude Include="..\krnlhook\kern_callback.h" />
+    <ClInclude Include="..\common\mem_map_io.h" />
+    <ClInclude Include="notify_event.h" />
+    <ClInclude Include="r3_interface.h" />
+    <ClInclude Include="..\seven_fw_common\safe_list.h" />
+    <ClInclude Include="socket_rule.h" />
+    <ClInclude Include="sys_event.h" />
+    <ClInclude Include="sys_event_define.h" />
+    <ClInclude Include="..\seven_fw_common\test_in_ring3.h" />
+    <ClInclude Include="trace_log.h" />
+    <ClInclude Include="trace_log_api.h" />
+    <ClInclude Include="trace_log_common.h" />
+    <ClInclude Include="unit_cbuffer.h" />
+    <ClInclude Include="..\level_security\btree\b_tree.h" />
+    <ClInclude Include="..\level_security\btree\btree_node.h" />
+    <ClInclude Include="..\level_security\hash\crc.h" />
+    <ClInclude Include="..\level_security\btree\path_id.h" />
+    <ClInclude Include="..\level_security\btree\path_tree.h" />
+    <ClInclude Include="..\level_security\btree\wild_card.h" />
+    <ClInclude Include="..\level_security\fs_mng\item_cache.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build_trace_log.bat" />
+    <None Include="Makefile" />
+    <None Include="Sources" />
+    <None Include="dev_plan.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
